@@ -36,7 +36,7 @@ const checkLogin = (req, res, next) => {
   if (req.cookies.auth_token) {
     next();
   } else {
-    return res.redirect("/auth/login");
+    return res.redirect("/api/v1/auth/login");
   }
 };
 
@@ -44,7 +44,7 @@ const isNotLoggedIn = (req, res, next) => {
   if (!req.cookies.auth_token) {
     next();
   } else {
-    return res.redirect("/tasks");
+    return res.redirect("/api/v1/tasks");
   }
 };
 

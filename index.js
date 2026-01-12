@@ -1,22 +1,25 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const connectDB = require("./config/db.js");
-const authRoutes = require("./routes/auth.route.js");
-const taskRoutes = require("./routes/task.route.js");
+const connectDB = require("./v1/config/db.js");
+const authRoutes = require("./v1/routes/auth.route.js");
+const taskRoutes = require("./v1/routes/task.route.js");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(cookieParser());
 connectDB();
 
-app.use("/auth", authRoutes);
-app.use("/tasks", taskRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/tasks", taskRoutes);
 
 app.get("/", (req, res) => {
-  console.log(req.cookies.token);
-  return res.send(`Hello from application!`);
+  return res.send(`Hello from Taskly API!`);
+});
+
+app.all(/.*/, (req, res) => {
+  return res.status(404).send(`Cannot ${req.method} ${req.url}`);
 });
 
 app.listen(port, () => {

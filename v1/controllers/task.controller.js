@@ -16,7 +16,7 @@ const createTask = async (req, res) => {
   try {
     const { title, description, status = "in progress", user_id = req.user.user_id } = req.body;
     await Task.create({ title, description, status, user_id });
-    res.status(201).redirect("/tasks");
+    res.status(201).redirect("/api/v1/tasks");
   } catch (error) {
     console.log("error in create task route");
     console.log(error);
@@ -58,7 +58,7 @@ const updateTask = async (req, res) => {
         if (task.user_id.equals(req.user.user_id)) {
           const { title, description, status } = req.body;
           await Task.findByIdAndUpdate(id, { title, description, status });
-          return res.status(200).redirect(`/tasks/${id}`);
+          return res.status(200).redirect(`/api/v1/tasks/`);
         } else {
           return res.status(403).send("Forbidden");
         }
