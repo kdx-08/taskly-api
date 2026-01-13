@@ -7,7 +7,7 @@ const registerRoute = async (req, res) => {
   try {
     const existingUser = await User.findOne({ username });
     if (existingUser?.id) {
-      return res.status(409).send("User Already Exists");
+      return res.status(409).json({ message: "User Already Exists" });
     }
     const passwordHash = await bcrypt.hash(password, 12);
     const user = await User.create({ name, username, email, passwordHash });
@@ -15,11 +15,11 @@ const registerRoute = async (req, res) => {
     return res
       .cookie("auth_token", token, { httpOnly: true, maxAge: 10 * 60 * 1000 })
       .status(201)
-      .send("User Account Created");
+      .json({ message: "User Account Created" });
   } catch (error) {
     console.log("error in register route");
     console.log(error);
-    return res.status(500).send("Internal Server Error");
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -34,20 +34,20 @@ const loginRoute = async (req, res) => {
         return res
           .cookie("auth_token", token, { httpOnly: true, maxAge: 10 * 60 * 1000 })
           .status(200)
-          .send("User Login Successful");
+          .json({ message: "User Login Successful" });
       }
     }
-    return res.status(401).send("Invalid Credentials");
+    return res.status(401).json({ message: "Invalid Credentials" });
   } catch (error) {
     console.log("error in login route");
     console.log(error);
-    return res.status(500).send("Internal Server Error");
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
 const logoutRoute = (req, res) => {
   req.user = undefined;
-  return res.clearCookie("auth_token").status(200).send("Logout Successful");
+  return res.clearCookie("auth_token").status(200).json({ message: "Logout Successful" });
 };
 
 module.exports = { registerRoute, loginRoute, logoutRoute };

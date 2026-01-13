@@ -13,7 +13,7 @@ const validateRegisterForm = (req, res, next) => {
   } catch (error) {
     console.log("error in register form validation middleware");
     console.log(error);
-    return res.status(500).send("Internal Server Error");
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -21,14 +21,14 @@ const validateLoginForm = (req, res, next) => {
   try {
     const { username, password } = req.body;
     if (!username || !password) {
-      return res.status(400).send("Invalid Login Request");
+      return res.status(400).json({ message: "Invalid Login Request" });
     } else {
       next();
     }
   } catch (error) {
     console.log("error in login form validation middleware");
     console.log(error);
-    return res.status(500).send("Internal Server Error");
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
@@ -36,7 +36,7 @@ const checkLogin = (req, res, next) => {
   if (req.cookies.auth_token) {
     next();
   } else {
-    return res.redirect("/api/v1/auth/login");
+    return res.status(401).json({ message: "Unauthorized" });
   }
 };
 
@@ -44,7 +44,7 @@ const isNotLoggedIn = (req, res, next) => {
   if (!req.cookies.auth_token) {
     next();
   } else {
-    return res.redirect("/api/v1/tasks");
+    return res.status(200).json({ message: "Login Successful" });
   }
 };
 
@@ -55,12 +55,12 @@ const setUser = (req, res, next) => {
       req.user = user;
       next();
     } else {
-      return res.status(401).send("Unauthorized");
+      return res.status(401).json({ message: "Unauthorized" });
     }
   } catch (error) {
     console.log("error in set user middleware");
     console.log(error);
-    return res.status(500).send("Internal Server Error");
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 

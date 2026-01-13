@@ -12,7 +12,7 @@ const validateTask = (req, res, next) => {
   } catch (error) {
     console.log("error in validate task middleware");
     console.log(error);
-    return res.status(500).send("Internal Server Error");
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 };
 
