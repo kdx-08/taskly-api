@@ -47,8 +47,8 @@ h3 {
   font-weight: bold;
 }
 
-.task-title p,
-.task-content {
+.tasks-completed .task-title p,
+.tasks-completed .task-content {
   text-decoration: line-through;
 }
 
