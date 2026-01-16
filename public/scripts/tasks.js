@@ -106,6 +106,7 @@ const fetchTasks = async () => {
       <div class="options"><button onclick=completeTask("${item._id}")>&#9989;</button><button onclick=deleteTask("${item._id}")>&#10060;</button></div>
       </div>
       <div class="task-content">${item.description}</div>
+      <div class="hidden-options" style="display:none"><button onclick=completeTask("${item._id}")>&#9989;</button><button onclick=deleteTask("${item._id}")>&#10060;</button></div>
       `;
       tasksOngoing.appendChild(taskItem);
     }
