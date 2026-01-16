@@ -56,7 +56,7 @@ const setUser = async (req, res, next) => {
       req.user = user;
       const userExists = await User.findById(req.user.user_id);
       if (userExists) next();
-      else return res.status(401).json({ message: "Invalid Token" });
+      else return res.clearCookie("auth_token").status(401).json({ message: "Invalid Token" });
     } else {
       return res.status(401).json({ message: "Unauthorized" });
     }
