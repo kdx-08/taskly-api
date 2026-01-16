@@ -123,6 +123,7 @@ const fetchTasks = async () => {
         <div class="options"><button onclick=undoTask("${item._id}")>&#x1F504;</button><button onclick=deleteTask("${item._id}")>&#10060;</button></div>
       </div>
       <div class="task-content">${item.description}</div>
+      <div class="hidden-options" style="display:none"><button onclick=undoTask("${item._id}")>&#x1F504;</button><button onclick=deleteTask("${item._id}")>&#10060;</button></div>
       `;
       tasksCompleted.appendChild(taskItem);
     }
