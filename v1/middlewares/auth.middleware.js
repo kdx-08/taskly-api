@@ -1,4 +1,4 @@
-const { userJoi } = require("../models/User.js");
+const { userJoi, User } = require("../models/User.js");
 const jwt = require("jsonwebtoken");
 
 const validateRegisterForm = (req, res, next) => {
@@ -49,12 +49,14 @@ const isNotLoggedIn = (req, res, next) => {
   }
 };
 
-const setUser = (req, res, next) => {
+const setUser = async (req, res, next) => {
   try {
     if (req.cookies.auth_token) {
       const user = jwt.verify(req.cookies.auth_token, process.env.JWT_KEY);
       req.user = user;
-      next();
+      const userExists = await User.findById(req.user.user_id);
+      if (userExists) next();
+      else return res.status(401).json({ message: "Invalid Token" });
     } else {
       return res.status(401).json({ message: "Unauthorized" });
     }

@@ -30,7 +30,7 @@ checkLogin();
 const handleLogout = async (e) => {
   e.preventDefault();
   try {
-    const response = await fetch("http://:3000/api/v1/auth/logout", {
+    const response = await fetch("/api/v1/auth/logout", {
       method: "GET",
       credentials: "include",
     });
