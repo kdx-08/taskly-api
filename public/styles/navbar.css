@@ -1,0 +1,38 @@
+.logo {
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: default;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+}
+.link {
+  color: black;
+  cursor: pointer;
+  text-transform: lowercase;
+  letter-spacing: 2px;
+}
+.theme {
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem 0rem;
+}
+
+@media (max-width: 426px) {
+  .logo {
+    font-size: 1.2rem;
+    letter-spacing: normal;
+  }
+  .theme {
+    font-size: 2rem;
+  }
+  .link {
+    font-size: 0.75rem;
+    letter-spacing: normal;
+  }
+}

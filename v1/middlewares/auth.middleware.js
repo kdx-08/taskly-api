@@ -2,9 +2,10 @@ const { userJoi } = require("../models/User.js");
 const jwt = require("jsonwebtoken");
 
 const validateRegisterForm = (req, res, next) => {
+  const ip = req.ip;
   try {
     const { name, username, email, password } = req.body;
-    const results = userJoi.validate({ name, username, email, password }, { abortEarly: false });
+    const results = userJoi.validate({ name, username, email, password, ip }, { abortEarly: false });
     if (results.error) {
       return res.status(400).json(results.error.details);
     } else {
@@ -58,14 +59,18 @@ const setUser = (req, res, next) => {
       return res.status(401).json({ message: "Unauthorized" });
     }
   } catch (error) {
-    console.log("error in set user middleware");
-    console.log(error);
-    return res.status(500).json({ message: "Internal Server Error" });
+    if (error instanceof jwt.JsonWebTokenError || error instanceof jwt.TokenExpiredError) {
+      return res.status(401).json({ message: "Invalid Auth Token" });
+    } else {
+      console.log("error in set user middleware");
+      console.log(error);
+      return res.status(500).json({ message: "Internal Server Error" });
+    }
   }
 };
 
 const generateToken = (user) => {
-  const token = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "10m" });
+  const token = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "20m" });
   return token;
 };
 

@@ -6,6 +6,7 @@ const taskJoi = joi.object({
   description: joi.string().trim().min(3).max(100).required(),
   status: joi.string().trim().valid("in progress", "completed", "dropped").required(),
   user_id: joi.string().trim().required(),
+  ip: joi.string().required(),
 });
 
 const taskSchema = new mongoose.Schema(
@@ -29,6 +30,10 @@ const taskSchema = new mongoose.Schema(
     user_id: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+    },
+    ip: {
+      type: String,
+      required: true,
     },
   },
   {

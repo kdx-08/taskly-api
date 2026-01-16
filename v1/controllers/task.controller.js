@@ -13,9 +13,10 @@ const getAllTasks = async (req, res) => {
 };
 
 const createTask = async (req, res) => {
+  const ip = req.ip;
   try {
     const { title, description, status = "in progress", user_id = req.user.user_id } = req.body;
-    await Task.create({ title, description, status, user_id });
+    await Task.create({ title, description, status, user_id, ip });
     res.status(201).json({ message: "New Task Added" });
   } catch (error) {
     console.log("error in create task route");
@@ -56,8 +57,8 @@ const updateTask = async (req, res) => {
       const task = await Task.findById(id);
       if (task) {
         if (task.user_id.equals(req.user.user_id)) {
-          const { title, description, status } = req.body;
-          await Task.findByIdAndUpdate(id, { title, description, status });
+          const { status } = req.body;
+          await Task.findByIdAndUpdate(id, { status });
           return res.status(200).json({ message: "Task Updated Successfully" });
         } else {
           return res.status(403).json({ message: "Forbidden" });

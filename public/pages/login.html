@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+    <link rel="stylesheet" href="../styles/navbar.css" />
+    <link rel="stylesheet" href="../styles/form.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">Taskly</div>
+      <a href="../pages/tasks.html" class="link">Tasks</a>
+      <a href="../pages/settings.html" class="link">Settings</a>
+      <a href="../pages/login.html" id="auth-link" class="link">Login</a>
+    </nav>
+    <div>
+      <h1 class="heading">Sign in</h1>
+      <form class="form" id="login-form">
+        <input required minlength="3" class="input" type="text" name="username" id="username" placeholder="username" />
+        <input
+          required
+          minlength="8"
+          class="input"
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+        />
+        <p id="error-msg">Invalid credentials. Try again!</p>
+        <p id="success-msg">Login successful!</p>
+        <input id="submit" type="submit" class="input submit" value="Sign in" />
+        <p>Don't have an account? <a href="../pages/register.html" class="register">Sign up</a></p>
+      </form>
+    </div>
+    <script src="../scripts/script.js"></script>
+    <script src="../scripts/login.js"></script>
+  </body>
+</html>

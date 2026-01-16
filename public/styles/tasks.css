@@ -1,0 +1,54 @@
+h2,
+h3 {
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+h3 {
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid black;
+}
+
+.top-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task-title .options button {
+  margin-right: 8px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.task-item {
+  padding: 1rem;
+  margin: 1rem 0rem 1rem 0rem;
+  background-color: #f5f5f5;
+}
+
+.tasks-completed .task-item {
+  text-decoration: line-through;
+}
+
+.none-msg {
+  display: none;
+  margin: 2rem;
+  text-align: center;
+  text-transform: lowercase;
+}

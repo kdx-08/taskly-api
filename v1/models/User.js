@@ -12,6 +12,7 @@ const userJoi = joi.object({
   username: joi.string().trim().min(3).max(30).alphanum().required(),
   email: joi.string().trim().email().max(100).required(),
   password: joi.string().min(8).max(100).required(),
+  ip: joi.string().required(),
 });
 
 const userSchema = new mongoose.Schema(
@@ -33,6 +34,10 @@ const userSchema = new mongoose.Schema(
       unique: true,
     },
     passwordHash: {
+      type: String,
+      required: true,
+    },
+    ip: {
       type: String,
       required: true,
     },
