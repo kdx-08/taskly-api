@@ -72,7 +72,7 @@ const setUser = async (req, res, next) => {
 };
 
 const generateToken = (user) => {
-  const token = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "20m" });
+  const token = jwt.sign(user, process.env.JWT_KEY, { expiresIn: "7d" });
   return token;
 };
 
