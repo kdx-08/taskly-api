@@ -2,7 +2,7 @@ if (localStorage.getItem("auth-status") !== "true")
   window.location.replace(window.location.origin + "/pages/login.html");
 
 const completeTask = async (id) => {
-  const response = await fetch(`3000/api/v1/tasks/${id}`, {
+  const response = await fetch(`/api/v1/tasks/${id}`, {
     method: "PATCH",
     credentials: "include",
     body: JSON.stringify({
