@@ -7,8 +7,8 @@ It provides user authentication and personal task organization capabilities with
 
 ## Overview
 
-Taskly enables users to create and organize tasks, set priorities, define due dates, and track progress across devices.
-The backend is designed to be consumed by mobile and web clients, starting with an Android app built using Kotlin & Jetpack Compose.
+Taskly enables users to create and organize tasks, and track progress across devices.
+The backend is designed to be consumed by mobile and web clients.
 
 ---
 
@@ -16,7 +16,6 @@ The backend is designed to be consumed by mobile and web clients, starting with 
 
 - User registration & authentication (JWT)
 - Create, update, delete, archive tasks
-- Task priority & due date management
 - Task status tracking (Todo → In-Progress → Completed → Dropped)
 - Filtering & querying tasks status
 - Secure per-user data isolation
@@ -29,11 +28,11 @@ The backend is designed to be consumed by mobile and web clients, starting with 
 
 | Layer     | Choice              |
 | --------- | ------------------- |
-| Language  | JavaScript / Bun.js |
+| Language  | Node.js             |
 | Framework | Express.js          |
 | Database  | MongoDB             |
 | ORM       | Mongoose            |
-| Auth      | JSON Web Token      |
+| Auth      | JWT                 |
 
 ---
 
@@ -43,9 +42,9 @@ The backend is designed to be consumed by mobile and web clients, starting with 
 | ----------------------- | ------- |
 | Requirements & Analysis | Done    |
 | API Specification       | Done    |
-| Backend Implementation  | Pending |
-| Deployment              | Pending |
-| Web Client              | Pending |
+| Backend Implementation  | Done    |
+| Deployment              | Done    |
+| Web Client              | Done    |
 | Android Client          | Future  |
 
 ---
