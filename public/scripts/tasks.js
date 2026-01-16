@@ -1,5 +1,14 @@
 if (localStorage.getItem("auth-status") !== "true")
   window.location.replace(window.location.origin + "/pages/login.html");
+else {
+  document.body.innerHTML = `<nav class="navbar">
+      <div class="logo">Taskly</div>
+      <a href="/index.html" class="link">Tasks</a>
+      <a href="./pages/settings.html" class="link">Settings</a>
+      <a href="./pages/login.html" onClick="handleLogout" id="auth-link" class="link">Login</a>
+    </nav>
+    <h2>T<span class="title">ask</span>s</h2>`;
+}
 
 const completeTask = async (id) => {
   const response = await fetch(`/api/v1/tasks/${id}`, {
