@@ -26,33 +26,26 @@ The backend is designed to be consumed by mobile and web clients.
 
 ## Tech Stack
 
-| Layer     | Choice              |
-| --------- | ------------------- |
-| Language  | Node.js             |
-| Framework | Express.js          |
-| Database  | MongoDB             |
-| ORM       | Mongoose            |
-| Auth      | JWT                 |
+| Layer     | Choice     |
+| --------- | ---------- |
+| Language  | Node.js    |
+| Framework | Express.js |
+| Database  | MongoDB    |
+| ORM       | Mongoose   |
+| Auth      | JWT        |
 
 ---
 
 ## Development Roadmap
 
-| Milestone               | Status  |
-| ----------------------- | ------- |
-| Requirements & Analysis | Done    |
-| API Specification       | Done    |
-| Backend Implementation  | Done    |
-| Deployment              | Done    |
-| Web Client              | Done    |
-| Android Client          | Future  |
-
----
-
-## Intended Clients
-
-- **Web Dashboard** (Primary)
-- **Android App** (Planned)
+| Milestone               | Status |
+| ----------------------- | ------ |
+| Requirements & Analysis | Done   |
+| API Specification       | Done   |
+| Backend Implementation  | Done   |
+| Deployment              | Done   |
+| Web Client              | Done   |
+| Android Client          | Done   |
 
 ---
 
